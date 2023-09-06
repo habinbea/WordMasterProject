@@ -11,7 +11,7 @@ public class WordManager {
     }
 
     public int selectMenu() {
-        System.out.println("*** 영단어 마스터 ***\n"
+        System.out.print("*** 영단어 마스터 ***\n"
                 + "**********************\n"
                 + "1. 모든 단어 보기\n"
                 + "2. 수준별 단어 보기\n"
@@ -27,14 +27,31 @@ public class WordManager {
         return s.nextInt();
     }
     public void start() {
+
+        wordCRUD.loadFile();
         while(true) {
             int menu = selectMenu();
             if(menu == 0) break;
             if(menu == 4) {
-                wordCRUD.addWord();
+                wordCRUD.addItem();
             }
             else if(menu == 1) {
                 wordCRUD.listAll();
+            }
+            else if(menu == 2) {
+                wordCRUD.searchLevel();
+            }
+            else if(menu == 3) {
+                wordCRUD.searchWord();
+            }
+            else if(menu == 5) {
+                wordCRUD.updateItem();
+            }
+            else if(menu == 6) {
+                wordCRUD.deleteItem();
+            }
+            else if(menu == 7) {
+                wordCRUD.saveFile();
             }
         }
     }
